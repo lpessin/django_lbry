@@ -7,7 +7,7 @@ This is a Django Framework starter project for building web apps on top of the L
    * LBRY-SDK (https://github.com/lbryio/lbry-sdk)
    * LBRY-desktop UI (https://github.com/lbryio/lbry-desktop/tree/master/ui)
    
-   ![](https://github.com/lpessin/django_lbry/blob/master/ezgif-3-fd726111fdcb.gif?raw=true)
+   ![](screenshot.gif)
     
 ## Running
 
