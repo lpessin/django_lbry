@@ -12,13 +12,13 @@ This is a Django Framework starter project for building web apps on top of the L
 ## Running
 
   First install lbry-sdk and start the api on your environment [see](https://github.com/lbryio/lbry-sdk/blob/master/INSTALL.md)
-  (or just keep an LBRY instance open)
+  (or just keep an LBRY instance open).
+  
+   clone this repository
+  `git clone https://github.com/lpessin/django_lbry/`  
   
   
   Install other requirements with `pip install -r requirements.txt`    
-
-  clone this repository
-  `git clone https://github.com/lpessin/django_lbry/`  
   
   
   Run: `python manage.py runserver`
@@ -32,7 +32,7 @@ This is a Django Framework starter project for building web apps on top of the L
      
    URLs are following the same patterns as lbry.tv.   
    
-   Models ands Users auths to be added
+   Models ands Users auths to be added.
 
 ## Contributing
 
@@ -40,7 +40,7 @@ This is a Django Framework starter project for building web apps on top of the L
 
 ## License
 
-  This project is MIT licensed. For the full license, see [LICENSE](https://github.com/lpessin/django_lbry/blob/master/LICENSE)
+  This project is MIT licensed. For the full license, see [LICENSE](https://github.com/lpessin/django_lbry/blob/master/LICENSE).
 
 ## Contact
    
@@ -54,4 +54,4 @@ This is a Django Framework starter project for building web apps on top of the L
   https://lbry.tv  
   https://github.com/lbryio
 
-   * This is a community project
+   * This is a community project.
