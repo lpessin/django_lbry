@@ -11,7 +11,7 @@ This is a Django Framework starter project for building web apps on top of the L
     
 ## Running
 
-  First install lbry-sdk on your environment [see](https://github.com/lbryio/lbry-sdk/blob/master/INSTALL.md)
+  First install lbry-sdk and start the api on your environment [see](https://github.com/lbryio/lbry-sdk/blob/master/INSTALL.md)
   
   clone this repository
   `git clone https://github.com/lpessin/django_lbry/`  
