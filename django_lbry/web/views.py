@@ -5,7 +5,7 @@ from . import sdk
 # Home view. Trends
 def home(request):
     trending = sdk.claim_search(5, claim_type='stream', order_by=['support_amount'],
-                                any_tags=['python', 'technology', 'linux'], page_size=8, page=1,)
+                                any_tags=['python', 'technology', 'linux'], page_size=8, page=1)
 
     channels = sdk.claim_search(2, claim_type='channel', order_by=['support_amount'], page_size=4, page=1)
 
