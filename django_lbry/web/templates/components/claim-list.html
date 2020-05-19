@@ -1,0 +1,41 @@
+{% load extras %}
+<!--suppress ALL, XmlHighlighting -->
+<section class="claim-list">
+    <div class="claim-list__header">
+        <div><button aria-label="Filter" class="button button--alt" type="button"><span class="button__content"><span class="button__label">Filter</span>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon--ChevronDown"><polyline points="6 9 12 15 18 9"></polyline></svg></span></button></div><div class="claim-list__alt-controls"><span>Find what you were looking for?</span><button title="Yes" aria-label="Yes" class="button button--alt" type="button"><span class="button__content"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon--ThumbsUp"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path></svg></span></button><button title="No" aria-label="No" class="button button--alt" type="button"><span class="button__content"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon--ThumbsDown"><path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3zm7-13h2.67A2.31 2.31 0 0 1 22 4v7a2.31 2.31 0 0 1-2.33 2H17"></path></svg></span></button>
+        </div>
+    </div>
+    <ul class="ul--no-style card">
+        {% for r in data %}
+        {% if r.value.thumbnail.url %}
+        <li class="claim-preview__wrapper" role="link">
+            <div class="claim-preview">
+                <a href="{% url 'web:permanent' r.name r.claim_id %}"><div style="background-image: url(&quot;{{ r.value.thumbnail.url }}&quot;);" class="media__thumb"></div></a>
+                <div class="claim-preview__text">
+                    <div class="claim-preview-metadata">
+                        <div class="claim-preview-info">
+                            <a href="{% url 'web:permanent' r.name r.claim_id %}">
+                                <div class="claim-preview__title">
+                                    <span title="{{ r.value.title }}" class="truncated-text" style="-webkit-line-clamp: 2;">{{ r.value.title }}</span>
+                                </div></a>
+                            <div class="file-properties"><span>{{ r.value.video.duration }}</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon--Video"><g><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></g></svg>
+                            </div>
+                        </div>
+                        <div class="media__subtitle">
+                            {% if r.signing_channel.name %}
+                            <a class="button button--no-style button--uri-indicator" href="{% url 'web:permanent' r.signing_channel.name r.signing_channel.claim_id %}"><span class="button__content"><span class="channel-name">{{ r.signing_channel.name }}</span></span></a>
+                            {% else %}
+                            <a class="button button--no-style button--uri-indicator" href="#"><span class="button__content"><span class="channel-name">@anonymous</span></span></a>
+                            {% endif %}
+                            <span>{{ r.timestamp|timestamp }}</span></div>
+                    </div>
+                </div>
+            </div>
+        </li>
+        {% endif %}
+        {% endfor %}
+    </ul>
+</section>
+

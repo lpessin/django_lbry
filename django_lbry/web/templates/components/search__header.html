@@ -1,0 +1,52 @@
+{% load extras %}
+<!--suppress ALL -->
+
+<header class="search__header">
+      <div class="claim-preview__actions--header">
+      <a href="{% url 'web:community' search_url %}"><button aria-label="{{ call.canonical_url }}" class="button button--link media__uri" type="button">
+          <span class="button__content"><span class="button__label">lbry://{{ search_url }}</span></span>
+      </button></a>
+        <a class="button button--link media__uri--right" href="{% url 'web:top' %}"><span class="button__content">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon--Top"><g><line x1="12" y1="20" x2="12" y2="10"></line><line x1="18" y1="20" x2="18" y2="4"></line><line x1="6" y1="20" x2="6" y2="16"></line></g></svg>
+          <span class="button__label">View top claims for lbry://{{ search_url }}</span>
+        </span></a>
+      </div>
+      <div class="card">
+        <li class="claim-preview__wrapper" role="link">
+          <div class="claim-preview claim-preview--large">
+            <a href="{% url 'web:community' search_url %}">
+                <div style="background-image: url(&quot;{{ call.value.thumbnail.url }}&quot;);" class="media__thumb"></div>
+            </a>
+            <div class="claim-preview__text">
+              <div class="claim-preview-metadata">
+                <div class="claim-preview-info">
+                  {% if call.signing_channel.name %}
+                  <a href="{% url 'web:community' search_url %}"><div class="claim-preview__title"><span title="{{ call.value.title }}" class="truncated-text" style="-webkit-line-clamp: 2;">{{ call.value.title }}</span></div></a>
+                  <div class="file-properties"><span>{{ call.meta.effective_amount }} LBC</span>
+                  </div>
+                </div>
+                <div class="media__subtitle">
+                  <a class="button button--no-style button--uri-indicator" href="{% url 'web:permanent' call.signing_channel.name call.signing_channel.claim_id %}"><span class="button__content">
+                    <span class="channel-name">{{ call.signing_channel.normalized_name }}</span></span></a>
+                  {% else %}
+                    <a href="{% url 'web:community' search_url %}"><div class="claim-preview__title"><span title="{{ call.name }}" class="truncated-text" style="-webkit-line-clamp: 2;">{{ call.value.title }}</span></div></a>
+                  <div class="file-properties"><span>{{ call.meta.effective_amount }} LBC</span>
+                  </div>
+                </div>
+                <div class="media__subtitle">
+                  {% if call.name %}
+                  <a class="button button--no-style button--uri-indicator" href="{% url 'web:permanent' call.name call.claim_id %}"><span class="button__content">
+                    <span class="channel-name">{{ call.normalized_name }}</span></span></a>
+                  {% endif %}
+                  {% endif %}
+
+                  <span>{{ call.timestamp|timestamp }}</span></div></div>
+                <div class="file-properties--small file-properties--large">
+                    {% for item in call.value.tags %}
+                      <a class="button button--no-style tag" title="View tag" href="{% url 'web:tags' %}"><span class="button__content"><span class="button__label">{{ item }}</span></span></a>
+                    {% endfor %}
+                </div>
+              </div>
+            </div>
+          </div>
+    </header>

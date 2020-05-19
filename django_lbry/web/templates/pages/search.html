@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load extras %}
+{% block content %}
+<main class="main">
+  <section class="search">
+    {% include 'components/search__header.html'  %}
+    {% include 'components/claim-list.html' with data=search only %}
+  </section>
+</main>
+{% endblock %}

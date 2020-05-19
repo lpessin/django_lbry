@@ -1,0 +1,35 @@
+{% load extras %}
+<!--div class="claim-grid__wrapper"-->
+<!--suppress ALL -->
+
+<h1 class="section__actions">
+    <a class="button button--link claim-grid__title" href="/">
+        <span class="button__content">
+            <span class="button__label">{{ title }}</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon--ChevronRight">
+                <g fill="none" fill-rule="evenodd" stroke-linecap="round">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                </g>
+            </svg>
+        </span>
+    </a>
+</h1>
+<ul class="claim-grid">
+    {% for r in data %}
+    {% if r.value.thumbnail.url %}
+    <li role="link" class="card claim-preview--tile claim-preview__wrapper--channel">
+        <a href="{% url 'web:permanent' r.name r.claim_id %}">
+            <div style="background-image: url(&quot;{{ r.value.thumbnail.url }};);" class="media__thumb"></div>
+        </a><a href="{% url 'web:permanent' r.name r.claim_id %}"><h2 class="claim-tile__title"><span title="{{ r.name }}" class="truncated-text" style="-webkit-line-clamp: 2;">{{ r.name }}</span></h2></a>
+        <div>
+            <div class="claim-tile__info">
+                <div class="claim-tile__about--channel">
+                    <a href="{% url 'web:permanent' r.name r.claim_id %}"><button title="Look this channel" aria-label="Discover" class="button button--alt" type="button">
+                        <span class="button__content">
+                            <div class="button__label" style="position: relative;"><div style="position: relative; left: 50%; top: 50%; transform: translate(-50%);">
+                                <span style="visibility: visible;">Look</span></div></div></span>
+                    </button></a>
+                    <span class="claim-tile__publishes">{{ r.meta.claims_in_channel }} publishes</span></div></div></div></li>
+    {% endif %}
+    {% endfor %}
+</ul>

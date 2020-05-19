@@ -1,0 +1,61 @@
+{% load extras %}
+<!--div class="claim-grid__wrapper"-->
+<!--suppress ALL -->
+<h1 class="section__actions"><a class="button button--link claim-grid__title" href="/">
+          <span class="button__content">
+            <span class="button__label">{{ title }}</span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon--ChevronRight">
+              <g fill="none" fill-rule="evenodd" stroke-linecap="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </g>
+            </svg>
+          </span>
+        </a>
+        </h1>
+        <ul class="claim-grid">
+        {% for r in data %}
+        {% if r.value.thumbnail.url %}
+          <li role="link" class="card claim-preview--tile">
+            <a href="{% url 'web:permanent' r.name r.claim_id %}">
+              <div style="background-image: url(&quot;{{ r.value.thumbnail.url }}&quot;);" class="media__thumb">
+                <div class="claim-tile__file-properties">
+                  <div class="file-properties file-properties--small">
+                    <span>{{ r.value.video.duration }}</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon--Video">
+                      <g>
+                        <polygon points="23 7 16 12 23 17 23 7"></polygon>
+                        <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
+                      </g>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </a>
+            <a href="{% url 'web:permanent' r.name r.claim_id %}">
+              <h2 class="claim-tile__title">
+                <span title="{{ r.value.title }}" class="truncated-text" style="-webkit-line-clamp: 2;">{{ r.value.title }}</span>
+              </h2>
+            </a>
+            <div>
+              <div class="claim-tile__info">
+                <a class="button button--no-style" href="{% url 'web:permanent' r.signing_channel.name r.signing_channel.claim_id %}">
+                  <span class="button__content">
+                    <div class="channel-thumbnail">
+                      <img alt="Channel profile picture" class="channel-thumbnail__custom" src="{{ r.signing_channel.value.thumbnail.url }}">
+                    </div>
+                  </span>
+                </a>
+                <div class="claim-tile__about">
+                  <a class="button button--no-style button--uri-indicator" href="{% url 'web:permanent' r.signing_channel.name r.signing_channel.claim_id %}">
+                    <span class="button__content">
+                      <span class="channel-name">{{ r.signing_channel.name }}</span>
+                    </span>
+                  </a>
+                  <span>{{ r.timestamp|timestamp }}</span>
+                </div>
+              </div>
+            </div>
+          </li>
+        {% endif %}
+        {% endfor %}
+        </ul>

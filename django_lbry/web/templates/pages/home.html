@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load extras %}
+<!-- passar tudo para components ... include with only, listar todas as paginas e paths e fazer uma por uma dentro de class views e apps -->
+{% block content %}
+<!-- Page Content -->
+    <main class="main">
+      <div class="claim-grid__wrapper">
+       {% include 'components/claim-grid.html' with data=trending title='Trending on Django Lbry' only %}
+       {% include 'components/channel-grid.html' with data=channels title='Top channels' only  %}
+       {% include 'components/claim-grid.html' with data=today title="Today's top" only %}
+       {% include 'components/claim-grid.html' with data=lbry title='Recent from Me :D' only %}
+      </div>
+    </main>
+{% endblock %}
