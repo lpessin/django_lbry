@@ -7,9 +7,9 @@ def home(request):
     trending = sdk.claim_search(5, claim_type='stream', order_by=['support_amount'],
                                 any_tags=['python', 'technology', 'linux'], page_size=8, page=1)
 
-    channels = sdk.claim_search(2, claim_type='channel', order_by=['support_amount'], page_size=4, page=1)
+    channels = sdk.claim_search(5, claim_type='channel', order_by=['support_amount'], page_size=4, page=1)
 
-    today = sdk.claim_search(1, order_by=['support_amount'], page_size=4, page=1)
+    today = sdk.claim_search(1, claim_type='stream', order_by=['support_amount'], page_size=4, page=1)
 
     lbry = sdk.claim_search(claim_type='stream', channel_ids=['f8219d5914b95a0a2f670d92dea5dc24133278e9'],
                             order_by=['release_time'], page_size=4, page=1)

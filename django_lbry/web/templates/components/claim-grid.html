@@ -37,6 +37,7 @@
             </a>
             <div>
               <div class="claim-tile__info">
+                {% if r.signing_channel.name %}
                 <a class="button button--no-style" href="{% url 'web:permanent' r.signing_channel.name r.signing_channel.claim_id %}">
                   <span class="button__content">
                     <div class="channel-thumbnail">
@@ -50,6 +51,21 @@
                       <span class="channel-name">{{ r.signing_channel.name }}</span>
                     </span>
                   </a>
+                  {% else %}
+                  <a class="button button--no-style" href="">
+                  <span class="button__content">
+                    <div class="channel-thumbnail">
+                      <img alt="Channel profile picture" class="channel-thumbnail__custom" src="{{ r.signing_channel.value.thumbnail.url }}">
+                    </div>
+                  </span>
+                </a>
+                <div class="claim-tile__about">
+                  <a class="button button--no-style button--uri-indicator" href="">
+                    <span class="button__content">
+                      <span class="channel-name">@Anonymous</span>
+                    </span>
+                  </a>
+                  {% endif %}
                   <span>{{ r.timestamp|timestamp }}</span>
                 </div>
               </div>
